@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11101a"><title>Brainrot Case — Demo</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand-mark" id="brandHome" aria-label="На главную">☾</button>
+      <div class="brand-copy"><div class="brand-title">BRAINROT <span>CASE</span></div><div class="brand-subtitle">NIGHT MARKET · DEMO</div></div>
+      <div class="demo-pill"><span class="demo-dot"></span> DEMO</div>
+    </header>
+    <main>
+      <section class="balance-card">
+        <div class="balance-topline"><span class="eyebrow">ТВОЙ БАЛАНС</span><span class="test-label">ТОЛЬКО ТЕСТОВЫЕ МОНЕТЫ</span></div>
+        <div class="balance-line"><div class="balance-number" id="balanceValue">999 999</div><div class="coin-icon">B</div></div>
+        <div class="balance-bottom"><span>Игровой счёт</span><button class="reset-link" id="resetDemo">Сбросить демо ↻</button></div><div class="balance-glow"></div>
+      </section>
+      <section class="drops-section"><div class="section-heading compact-heading"><div><div class="eyebrow">СЕЙЧАС В ИГРЕ</div><h2>Последние находки</h2></div><span class="live-label"><i></i> DEMO FEED</span></div><div class="drops-rail" id="dropsRail"></div></section>
+      <nav class="main-tabs" aria-label="Разделы"><button class="tab-button active" data-view="homeView">Кейсы</button><button class="tab-button" data-view="upgradeView">Апгрейд</button><button class="tab-button" data-view="inventoryView">Инвентарь</button></nav>
+
+      <section id="homeView" class="view">
+        <div class="home-intro"><div class="eyebrow">ОТКРОЙ НЕЧТО НЕОБЫЧНОЕ</div><h1>Твоя следующая<br><span>находка</span> ближе, чем кажется</h1><p>Выбирай кейс. Лови момент. Собирай коллекцию.</p><div class="intro-moon">☾</div></div>
+        <div class="section-heading cases-heading"><div><div class="eyebrow">КАТАЛОГ</div><h2>Кейсы</h2></div><span class="case-count">01 ДОСТУПЕН</span></div>
+        <button class="case-card" id="openStarterCase"><div class="case-art-wrap"><div class="case-halo"></div><div class="case-spark spark-a">✦</div><div class="case-spark spark-b">✧</div><div class="starter-crate"><div class="crate-lid"><span>BC</span><b>✦</b></div><div class="crate-body"><span>🎃</span><strong>AFTER DARK</strong></div><div class="crate-front"></div></div><div class="case-orbit">✦　✧　✦</div></div><div class="case-card-info"><div><div class="case-name">НАЧАЛЬНЫЙ</div><div class="case-meta">4 ПРЕДМЕТА · ТЕСТОВЫЙ КЕЙС</div></div><div class="case-price"><span>13</span><i>B</i></div></div><div class="case-card-footer"><span>ПОСМОТРЕТЬ КЕЙС</span><span>↗</span></div></button>
+        <div class="disclaimer">Демо-режим: монеты, предметы и результаты существуют только внутри тестового приложения.</div>
+      </section>
+
+      <section id="caseView" class="view hidden">
+        <button class="back-button" id="backHome">← <span>К КЕЙСАМ</span></button>
+        <div class="case-detail-hero"><div class="detail-orbit"></div><div class="detail-crate">🎃</div><div class="detail-chip">NIGHT DROP</div><h1>НАЧАЛЬНЫЙ</h1><p>Четыре находки. Одна попытка изменить коллекцию.</p><div class="detail-price"><span>ЦЕНА КЕЙСА</span><b>13 <i>B</i></b></div></div>
+        <section class="roulette-section"><div class="section-heading compact-heading"><div><div class="eyebrow">СЛЕДИ ЗА ЛЕНТОЙ</div><h2>Открытие</h2></div><span class="roll-status" id="rollStatus">ОЖИДАНИЕ</span></div><div id="reels" class="reels-area"><div class="roulette-empty"><span>✦</span><b>ЧТО ЖЕ ВНУТРИ?</b><small>Выбери количество и запускай рулетку</small></div></div></section>
+        <section class="quantity-panel"><div class="quantity-title"><span>Количество кейсов</span><small>ДО 10 ЗА РАЗ</small></div><div class="quantity-options" id="quantityOptions"></div><div class="spin-price-line"><span>Итого к оплате</span><b id="totalCost">13 B</b></div><div class="spin-actions"><button class="primary-button" id="spinButton"><span class="button-spark">✦</span><span id="spinButtonText">ОТКРЫТЬ ×1</span><span class="button-arrow">↗</span></button><button class="lightning-button mode-toggle" id="quickSpin" type="button" aria-label="Включить быструю прокрутку" aria-pressed="false" title="Режим быстрой прокрутки">ϟ</button></div><div class="small-note" id="caseSpeedNote">Обычная прокрутка · нажми ϟ, чтобы выбрать быструю.</div></section>
+        <section id="resultPanel" class="result-panel hidden"><div class="result-heading"><span class="result-confetti">✦</span><div><div class="eyebrow">ТВОИ НАХОДКИ</div><h2>Результат открытия</h2></div><span class="result-confetti">✧</span></div><div id="resultItems" class="result-items"></div><div class="result-actions"><button class="sell-button" id="sellAllButton">ПРОДАТЬ ВСЁ · <span id="sellTotal">0</span> B</button><button class="again-button" id="againButton">↻ ЕЩЁ РАЗ</button></div><div class="inventory-hint">Оставленные предметы сохраняются в твоём демо-инвентаре.</div></section>
+        <section class="contents-section"><div class="section-heading compact-heading"><div><div class="eyebrow">БЕЗ СЕКРЕТОВ О ПРЕДМЕТАХ</div><h2>Содержимое кейса</h2></div><span class="case-count">4 ПРЕДМЕТА</span></div><div id="caseContents" class="contents-list"></div></section>
+      </section>
+
+      <section id="upgradeView" class="view hidden">
+        <div class="page-heading"><div class="eyebrow">РИСКНИ ЧАСТЬЮ КОЛЛЕКЦИИ</div><h1>Апгрейдер</h1><p>Выбери предмет, цель и реши, насколько далеко готов зайти.</p></div>
+        <div class="upgrade-presets"><div class="panel-label">БЫСТРЫЕ ЦЕЛИ</div><div id="presetButtons" class="preset-grid"></div></div>
+        <div class="upgrade-stage">
+          <div class="upgrade-slots"><div class="upgrade-slot"><div class="slot-label">ТВОЙ ПРЕДМЕТ</div><div id="upgradeSource" class="slot-content empty-slot"><span>＋</span><small>Выбери из инвентаря</small></div></div><div class="upgrade-slot"><div class="slot-label">ЖЕЛАЕМАЯ НАХОДКА</div><div id="upgradeTarget" class="slot-content empty-slot"><span>✧</span><small>Выбери цель ниже</small></div></div></div>
+          <div class="chance-zone"><div class="wheel-wrap" aria-label="Колесо апгрейдера"><div class="wheel-halo"></div><div class="wheel-dial" id="gaugeWheel"><div class="wheel-ticks" aria-hidden="true"></div></div><div class="wheel-pointer" aria-hidden="true"></div><div class="wheel-center"><strong id="chanceValue">—</strong><small>ШАНС ПОБЕДЫ</small></div></div><div class="chance-caption" id="chanceCaption">Выбери предметы для расчёта</div><div class="wheel-legend"><span><i class="legend-win"></i>ПОПАДИ В ФИОЛЕТОВЫЙ СЕКТОР</span><span><i class="legend-lose"></i>ПРОИГРЫШ</span></div></div>
+          <div class="upgrade-extra"><div class="extra-head"><span>ДОБАВИТЬ ТЕСТОВЫЕ МОНЕТЫ</span><b id="extraValue">0 B</b></div><div class="extra-amount-row"><input id="extraBalance" type="range" min="0" max="0" step="1" value="0"><label class="extra-number-wrap"><span>ВВЕСТИ</span><input id="extraAmount" type="number" min="0" max="0" step="1" value="0" inputmode="numeric"></label></div><div class="range-foot"><span>0 B</span><span>80 B = +1 п.п. · 6 000 B = +75 п.п. · предел 75%</span><span id="extraMax">0 B</span></div></div>
+          <div class="upgrade-speed-row"><div><b>Быстрый апгрейд</b><small id="upgradeSpeedNote">Обычная анимация · около 9 секунд</small></div><button class="lightning-button mode-toggle" id="quickUpgrade" type="button" aria-pressed="false" aria-label="Включить быстрый апгрейд">ϟ</button></div>
+          <button id="upgradeButton" class="primary-button upgrade-run" disabled><span>ЗАПУСТИТЬ АПГРЕЙД</span><span>↗</span></button>
+          <div id="upgradeResult" class="upgrade-result hidden"></div>
+        </div>
+        <div class="picker-section"><div class="picker-heading"><div><div class="eyebrow">ШАГ 1</div><h2>Твои предметы</h2></div><span id="sourceCount" class="case-count">0</span></div><div id="sourcePicker" class="picker-grid"></div></div>
+        <div class="picker-section"><div class="picker-heading"><div><div class="eyebrow">ШАГ 2</div><h2>Выбери цель</h2></div><span class="case-count">КАТАЛОГ</span></div><input id="targetSearch" class="search-input" type="search" placeholder="Поиск предмета..."><div class="range-inputs"><label>От, B<input id="minValue" type="number" min="0" placeholder="0"></label><label>До, B<input id="maxValue" type="number" min="0" placeholder="∞"></label><button id="applyFilter">НАЙТИ</button></div><div id="targetPicker" class="picker-grid"></div></div>
+        <div class="disclaimer">Шансы в апгрейдере показываются как игровой параметр. Это не реальные ценности и не возможность получить или вывести Roblox-предмет.</div>
+      </section>
+
+      <section id="inventoryView" class="view hidden">
+        <div class="page-heading"><div class="eyebrow">ТВОИ СОБРАННЫЕ НАХОДКИ</div><h1>Инвентарь</h1><p>Предметы, результаты апгрейдов и история коллекции.</p></div>
+        <div class="inventory-summary"><div><small>ПРЕДМЕТОВ</small><b id="inventoryCount">0</b></div><div><small>ОБЩАЯ СТОИМОСТЬ</small><b id="inventoryWorth">0 B</b></div></div>
+        <div class="inventory-toolbar"><h2>Моя коллекция</h2><span class="case-count">МОИ ПРЕДМЕТЫ</span></div><div id="inventoryGrid" class="inventory-grid"></div>
+        <div class="inventory-toolbar history-title"><h2>История апгрейдов</h2><span class="case-count">ПОСЛЕДНИЕ</span></div><div id="upgradeHistory" class="history-list"></div>
+        <div class="disclaimer">Кнопка «Вывод» в этой демо-версии не выполняет передачу предметов и оставлена только как макет интерфейса.</div>
+      </section>
+    </main>
+    <footer class="footer">✦ NIGHT MARKET <span class="footer-separator">•</span> BRAINROT CASE <span>✦</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status"></div><script src="app.js"></script>
+</body></html>
