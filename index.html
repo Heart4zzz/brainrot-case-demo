@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100d19">
+  <title>Brainrot Case — Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand-mark" id="brandHome" aria-label="На главную">🎃</button>
+      <div class="brand-copy">
+        <div class="brand-title">BRAINROT <span>CASE</span></div>
+        <div class="brand-subtitle">HALLOWEEN EDITION</div>
+      </div>
+      <div class="demo-pill"><span class="demo-dot"></span> ДЕМО</div>
+    </header>
+
+    <main>
+      <section class="balance-card">
+        <div class="balance-topline">
+          <span class="eyebrow">ТВОЙ БАЛАНС</span>
+          <span class="test-label">ТЕСТОВЫЕ МОНЕТЫ</span>
+        </div>
+        <div class="balance-line">
+          <div class="balance-number" id="balanceValue">999 999</div>
+          <div class="coin-icon">B</div>
+        </div>
+        <div class="balance-bottom">
+          <span>Игровой счёт</span>
+          <button class="reset-link" id="resetDemo">Сбросить демо ↻</button>
+        </div>
+        <div class="balance-glow"></div>
+      </section>
+
+      <section class="drops-section">
+        <div class="section-heading compact-heading">
+          <div>
+            <div class="eyebrow">СООБЩЕСТВО</div>
+            <h2>Лента дропов</h2>
+          </div>
+          <span class="live-label"><i></i> ПРИМЕРЫ</span>
+        </div>
+        <div class="drops-rail" id="dropsRail"></div>
+      </section>
+
+      <section class="halloween-banner">
+        <div class="banner-decoration">✦　🎃　✦　🦇　✦　🎃　✦</div>
+        <div class="banner-tag">LIMITED THEME</div>
+        <div class="banner-title">НОЧЬ<br><span>БРЕЙНРТОВ</span></div>
+        <p>Открой свой первый кейс<br>и найди редкий дроп.</p>
+        <div class="banner-pumpkin">🎃</div>
+        <div class="banner-bats">🦇　✦　🦇</div>
+      </section>
+
+      <section id="homeView" class="view">
+        <div class="section-heading cases-heading">
+          <div>
+            <div class="eyebrow">ВЫБИРАЙ СВОЮ УДАЧУ</div>
+            <h2>Кейсы</h2>
+          </div>
+          <span class="case-count">01 КЕЙС</span>
+        </div>
+        <button class="case-card" id="openStarterCase">
+          <div class="case-art-wrap">
+            <div class="case-halo"></div>
+            <div class="case-spark spark-a">✦</div>
+            <div class="case-spark spark-b">✧</div>
+            <div class="starter-crate">
+              <div class="crate-lid"><span>BC</span><b>✦</b></div>
+              <div class="crate-body"><span>🎃</span><strong>STARTER</strong></div>
+              <div class="crate-front"></div>
+            </div>
+            <div class="case-orbit">✦　✧　✦</div>
+          </div>
+          <div class="case-card-info">
+            <div>
+              <div class="case-name">НАЧАЛЬНЫЙ</div>
+              <div class="case-meta">4 ПРЕДМЕТА · ОТ 7 B</div>
+            </div>
+            <div class="case-price"><span>13</span><i>B</i></div>
+          </div>
+          <div class="case-card-footer"><span>ОТКРЫТЬ КЕЙС</span><span>↗</span></div>
+        </button>
+        <div class="soon-card"><span class="lock-icon">♧</span><div><b>НОВЫЕ КЕЙСЫ</b><small>Скоро появятся в демо</small></div><span class="soon-badge">SOON</span></div>
+        <div class="disclaimer">Все балансы, цены и выпадения в этой версии тестовые. Данные хранятся только в браузере этого устройства.</div>
+      </section>
+
+      <section id="caseView" class="view hidden">
+        <button class="back-button" id="backHome">← <span>К СПИСКУ КЕЙСОВ</span></button>
+        <div class="case-detail-hero">
+          <div class="detail-orbit"></div>
+          <div class="detail-crate">🎃</div>
+          <div class="detail-chip">HALLOWEEN DROP</div>
+          <h1>НАЧАЛЬНЫЙ</h1>
+          <p>Первый шаг в коллекцию брейнротов</p>
+          <div class="detail-price"><span>СТОИМОСТЬ</span><b>13 <i>B</i></b></div>
+        </div>
+
+        <section class="roulette-section">
+          <div class="section-heading compact-heading">
+            <div><div class="eyebrow">НЕ УПУСТИ СВОЙ ДРОП</div><h2>Рулетка</h2></div>
+            <span class="roll-status" id="rollStatus">ГОТОВО</span>
+          </div>
+          <div id="reels" class="reels-area">
+            <div class="roulette-empty"><span>✦</span><b>ТВОЙ ДРОП ЖДЁТ</b><small>Выбери количество и нажми «Крутить»</small></div>
+          </div>
+        </section>
+
+        <section class="quantity-panel">
+          <div class="quantity-title"><span>Количество кейсов</span><small>МАКС. 10</small></div>
+          <div class="quantity-options" id="quantityOptions"></div>
+          <div class="spin-price-line"><span>Стоимость открытия</span><b id="totalCost">13 B</b></div>
+          <button class="primary-button" id="spinButton"><span class="button-spark">✦</span><span id="spinButtonText">КРУТИТЬ!</span><span class="button-arrow">↗</span></button>
+          <div class="small-note">Результаты генерируются локально для демонстрации.</div>
+        </section>
+
+        <section id="resultPanel" class="result-panel hidden">
+          <div class="result-heading"><span class="result-confetti">✦</span><div><div class="eyebrow">ТВОИ НАХОДКИ</div><h2>Поздравляем!</h2></div><span class="result-confetti">✧</span></div>
+          <div id="resultItems" class="result-items"></div>
+          <div class="result-actions">
+            <button class="sell-button" id="sellAllButton">ПРОДАТЬ ВСЁ · <span id="sellTotal">0</span> B</button>
+            <button class="again-button" id="againButton">↻ ЕЩЁ РАЗ</button>
+          </div>
+          <div class="inventory-hint">Не продавай находки — они останутся в тестовой коллекции на этом устройстве.</div>
+        </section>
+
+        <section class="contents-section">
+          <div class="section-heading compact-heading"><div><div class="eyebrow">ЧТО ВНУТРИ</div><h2>Содержимое кейса</h2></div><span class="case-count">4 ПРЕДМЕТА</span></div>
+          <div id="caseContents" class="contents-list"></div>
+        </section>
+        <div class="disclaimer">Только демо-режим. Нет реальных платежей, денежных выигрышей или доставки предметов.</div>
+      </section>
+    </main>
+    <footer class="footer"><span>🕸</span> BRAINROT CASE <span class="footer-separator">•</span> HALLOWEEN 2026 <span>🕸</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
